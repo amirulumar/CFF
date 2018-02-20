@@ -16,10 +16,11 @@
 	}
 	/* first page div*/
 	.main1 {
+		top: 40%;
+		left: 30%;
 		transition: all 1s ease;
 		position: absolute;
-		top: 45%;
-		left: 25%;
+		width: 100%;
 		height: 80px;
 		display: block;
 	}
@@ -96,6 +97,18 @@
 		background: #C44346;
 		
 	}
+	#container {
+  		margin: 20px;
+  		width: 200px;
+  		height: 200px;
+  		position: relative;
+	}
+	#container1 {
+		margin: 20px;
+  		width: 200px;
+  		height: 200px;
+  		position: relative;
+	}
 </style>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -116,20 +129,59 @@
     <option value="7days">past week</option>
     <option value="14days">past weeks</option>
   </select>
-  <button onClick="search()" id="srchbtn" type="button" class="btn btn-default">Search</button>
+  <button onClick="search(); progressBarSim()" id="srchbtn" type="button" class="btn btn-default">Search</button>
 </div>
 	
 	
 <div class="main2" id="main2">
-  <p id="searchtext">fsdfds</p>
+  <p id="searchtext"></p>
+	<div id="container"></div>
+	<h3 id="finalMessage"></h3>
   <button id="backbtn" onClick="back()" type="button" class="btn btn-default">Back</button>
-	
 </div>
 	
 	
-<script src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/progressbar.min.js"></script>
 <script>
-	function search(){
+	// progressbar.js@1.0.0 version is used
+	// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+		
+	var finalMessage = document.getElementById('finalMessage');
+	var bar = new ProgressBar.Circle(container, {
+  		color: '#aaa',
+  		// This has to be the same size as the maximum width to
+  		// prevent clipping
+  		strokeWidth: 6,
+  		trailWidth: 4,
+  		easing: 'easeInOut',
+  		duration: 10000,
+  		text: {
+    		autoStyleContainer: false
+  		},
+  		from: { color: '#aaa', width: 4 },
+  		to: { color: '#05f', width: 6 },
+  		// Set default step function for all animate calls
+  		step: function(state, circle) {
+    		circle.path.setAttribute('stroke', state.color);
+    		circle.path.setAttribute('stroke-width', state.width);
+			
+			var value = Math.round(circle.value() * 100);
+    		if (value === 0) {
+     			circle.setText('');
+    		} else {
+				circle.setText(value + "%");
+    		}
+			
+			if (value == 100) {
+				finalMessage.innerHTML = "Process is complete.";
+			}
+  		}
+	});
+	bar.text.style.fontFamily = 'Helvetica, sans-serif';
+	bar.text.style.fontSize = '5rem';
+	bar.text.style.color= '#333';
+	function search() {
 		document.getElementById("main2").style="transition-delay:0.3s; top:5%; opacity:1;";
 		document.getElementById("main1").style="transition-delay:0s; opacity:0; top:-20%;";
 		var main1 = document.getElementById("main1");
@@ -139,9 +191,12 @@
 		searchtext.innerHTML = "Searching " + search + "...";
 	}
 	
-	function back(){
+	function back() {
 		document.getElementById("main2").style="transition-delay:0s; opacity:0;";
 		document.getElementById("main1").style="transition-delay:0.3s; top:45%;";
+	}
+	function progressBarSim() {
+		bar.animate(1.0);  // Number from 0.0 to 1.0
 	}
 </script>
 </body>
