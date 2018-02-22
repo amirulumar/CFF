@@ -46,8 +46,17 @@
 	width: 100%;
 	height: 90%;
 	top: 100%;
-	disabled: true;
 }
+	
+/* third page div*/
+	.main3 {
+		transition: all 1s ease;
+		opacity: 0;
+		position: absolute;
+		width: 100%;
+		top: 200%;
+		height: 90vh;
+	}
 /*dropdown menu*/
 .drpdwn {
 	font-size: 25px;
@@ -59,6 +68,7 @@
 	height: 75%;
 
 }
+	
 .drpdwn:hover {
 	background-color: #C44346;
 }
@@ -125,9 +135,20 @@
 	}
 	#backbtn:hover{
 		background: #C44346;
-		
 	}
-}
+	
+	#cancelbtn{
+	transition: all 0.5s ease;
+	border: none;
+	background: #333;
+		position: absolute;
+	left: 90%;
+		top:90%;
+	}
+	#cancelbtn:hover{
+		background: #C44346;
+	}
+
 	#container {
 	margin: 20px;
 	width: 5%;
@@ -172,7 +193,12 @@
   <p id="searchtext"></p>
 	<div id="container"></div>
 	<h3 id="finalMessage"></h3>
-  <button id="backbtn" onClick="back()" type="button" class="btn btn-default">Back</button>
+  <button id="cancelbtn" onClick="cancel()" type="button" class="btn btn-default">Cancel</button>
+</div>
+	
+	
+<div class="main3" id="main3">
+	<button id="backbtn" onClick="back()" type="button" class="btn btn-default">Back</button>
 </div>
 	
 	
@@ -218,6 +244,8 @@
 	bar.text.style.fontSize = '5rem';
 	bar.text.style.color= '#333';
 	
+	
+	var timer;
 	function search() {
 		var search = document.getElementById("srchbox").value;
 		var searchtext = document.getElementById("searchtext");
@@ -226,18 +254,31 @@
 		} else {
 			document.getElementById("eswdiv").style.opacity="0";
 			document.getElementById("main2").style="transition-delay:0.3s; top:5%; opacity:1;";
-		document.getElementById("main1").style="transition-delay:0s; opacity:0; top:-20%;";
-		var main1 = document.getElementById("main1");
-		main1.style.top="-20%";		
-		searchtext.innerHTML = "Searching " + search + "...";
+			document.getElementById("main1").style="transition-delay:0s; opacity:0; top:-20%;";	
+			searchtext.innerHTML = "Searching " + search + "...";
+			timer = setTimeout(progresscomplete, 10000);
 		}
 		
 	}
 	
-	function back() {
+	function cancel() {
 		document.getElementById("main2").style="transition-delay:0s; opacity:0;";
 		document.getElementById("main1").style="transition-delay:0.3s; top:45%;";
+		clearTimeout(timer);
 	}
+	
+	function back() {
+		document.getElementById("main3").style="transition-delay:0s; opacity:0;";
+		document.getElementById("main1").style="transition-delay:0.3s; top:45%;";
+		document.getElementById("main2").style="transition-delay:0s; opacity:0; top:100%;"
+	}
+	
+	function progresscomplete() {
+		document.getElementById("main2").style="transition-delay:0s; opacity:0; top:-100%;"
+		document.getElementById("main3").style="transition-delay:0.3s; top:5%; opacity:1;"
+	}
+	
+	
 	function progressBarSim() {
 		bar.animate(1.0);  // Number from 0.0 to 1.0
 	}
