@@ -16,126 +16,120 @@
 	}
 	
 	.bgimage{
-	background-image: url(img/cornfieldbg.jpg);
-	width: 100%;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	z-index: -1;
+		background-image: url(img/cornfieldbg.jpg);
+		width: 100%;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		z-index: -1;
 		filter:blur(6px)
-			brightness(75%);
-		
+		brightness(75%);
 	}
 	
 	/* first page div*/
-.main1 {
-	transition: all 1s ease;
-	position: absolute;
-	top: 45%;
-	width: 50%;
-	left: 25%;
-	height: 80px;
-	display: block;
-}
-/* second page div*/
-.main2 {
-	transition: all 1s ease;
-	transition-delay: 1.5s;
-	opacity: 0;
-	position: absolute;
-	width: 100%;
-	height: 90%;
-	top: 100%;
-	disabled: true;
-}
-/*dropdown menu*/
-.drpdwn {
-	font-size: 25px;
-	transition: background-color .5s ease;
-	/*margin-top: 20%;*/
-	margin-left: 1%;
-	height: 100%;
-	width: 30%;
-	height: 75%;
-
-}
-.drpdwn:hover {
-	background-color: #C44346;
-}
-.drpdwn:focus {
-	background-color: #C44346;
-}
-/*search box*/
-.srchbox {
-	padding: 5px;
-	font-size: 25px;
-	transition: background-color .5s ease;
-	border: thin;
-	height: 75%;
-	width: 66%;
-}
+	.main1 {
+		transition: all 1s ease;
+		position: absolute;
+		top: 45%;
+		width: 50%;
+		left: 25%;
+		height: 80px;
+		display: block;
+	}
+	/* second page div*/
+	.main2 {
+		transition: all 1s ease;
+		transition-delay: 1.5s;
+		opacity: 0;
+		position: absolute;
+		width: 100%;
+		height: 90%;
+		top: 100%;
+		disabled: true;
+	}
+	/*dropdown menu*/
+	.drpdwn {
+		font-size: 25px;
+		transition: background-color .5s ease;
+		/*margin-top: 20%;*/
+		margin-left: 1%;
+		height: 100%;
+		width: 30%;
+		height: 75%;
+	}
+	.drpdwn:hover {
+		background-color: #C44346;
+	}
+	.drpdwn:focus {
+		background-color: #C44346;
+	}
+	/*search box*/
+	.srchbox {
+		padding: 5px;
+		font-size: 25px;
+		transition: background-color .5s ease;
+		border: thin;
+		height: 75%;
+		width: 66%;
+	}
 	
 	.srchbox:hover {
-	background-color: #C44346;
-}
+		background-color: #C44346;
+	}
 	
-.srchbox:focus {
-	background-color: #C44346;
-}
-/*search button*/
-#srchbtn {
-	transition: all .5s ease;
-	background: #333;
-	position: absolute;
-	border: thin #FFFFFF;
-	width: 25%;
-	margin-top: 10%;
-	height: 75%;
-	left: 37.5%;
-}
-#srchbtn:hover {
-	color: #FFFFFF;
-	background-color: #C44346;
-}
+	.srchbox:focus {
+		background-color: #C44346;
+	}
+	/*search button*/
+	#srchbtn {
+		transition: all .5s ease;
+		background: #333;
+		position: absolute;
+		border: thin #FFFFFF;
+		width: 25%;
+		margin-top: 10%;
+		height: 75%;
+		left: 37.5%;
+	}
+	#srchbtn:hover {
+		color: #FFFFFF;
+		background-color: #C44346;
+	}
 	
-	.eswdiv{
+	.eswdiv {
 		transition: all .5s ease-in;
 		margin-top: 20%;
 		background-color: #E00003;
 		opacity: 0;
 	}
-	.eswdiv p{
+	.eswdiv p {
 		color: white;
 		font-weight: bold;
 		opacity: 1;
 	}
-
-/* "Searching..." text after clicking search button*/
-#searchtext {
-	font-size: 50px;
-}
+	
+	/* "Searching..." text after clicking search button*/
+	#searchtext {
+		font-size: 50px;
+	}
 	
 	#backbtn{
-	transition: all 0.5s ease;
-	border: none;
-	background: #333;
+		transition: all 0.5s ease;
+		border: none;
+		background: #333;
 		position: absolute;
-	left: 90%;
-		top:90%;
+		left: 90%;
+		top: 90%;
 	}
 	#backbtn:hover{
 		background: #C44346;
 		
 	}
-}
-	#container {
-	margin: 20px;
-	width: 5%;
-	height: 5%;
-	position: relative;
+	h4 {
+		text-align: center;
 	}
-	#container1 {
-		margin: 20px;
+	#container, #container1, #container2, #container3, #container4 {
+  		margin: 20px;
   		width: 200px;
   		height: 200px;
   		position: relative;
@@ -151,9 +145,9 @@
 </head>
 
 <body>
-	<div class="bgimage"></div>
-<div class="main1" id="main1">
+<div class="bgimage"></div>
 	
+<div class="main1" id="main1">
   <input type="search" class="srchbox" id="srchbox" placeholder="Search crop...">
   <select name="select" class="drpdwn"> 
     <option value="8hours">past 8 hours</option>
@@ -162,7 +156,7 @@
     <option value="7days">past week</option>
     <option value="14days">past weeks</option>
   </select>
-  <button onClick="search(); progressBarSim()" id="srchbtn" type="button" class="btn btn-default">Search</button>
+  <button onClick="search()" id="srchbtn" type="button" class="btn btn-default">Search</button>
 	
 	<div class="eswdiv" id="eswdiv"><p id="emptysearchwarning">Please enter crop name!</p></div>
 </div>
@@ -170,7 +164,24 @@
 	
 <div class="main2" id="main2">
   <p id="searchtext"></p>
-	<div id="container"></div>
+	<table class="table-bordered">
+		<tbody>
+			<tr>
+				<td><div id="container"></div></td>
+				<td><div id="container1"></div></td>
+				<td><div id="container2"></div></td>
+				<td><div id="container3"></div></td>
+				<td><div id="container4"></div></td>
+			</tr>
+			<tr>
+				<td><h4 id="info"></h4></td>
+				<td><h4 id="info1"></h4></td>
+				<td><h4 id="info2"></h4></td>
+				<td><h4 id="info3"></h4></td>
+				<td><h4 id="info4"></h4></td>
+			</tr>
+		</tbody>
+	</table>
 	<h3 id="finalMessage"></h3>
   <button id="backbtn" onClick="back()" type="button" class="btn btn-default">Back</button>
 </div>
@@ -179,24 +190,28 @@
 <script type="text/javascript" src="js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/progressbar.min.js"></script>
 <script>
-	
 	// progressbar.js@1.0.0 version is used
 	// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
 		
 	var finalMessage = document.getElementById('finalMessage');
+	var avgStroke = 6;
+	var avgTrail = 4;
+	// Loading times may vary per progress bar, used for debugging purposes for now
+	var avgLoading = 1000;
+	
 	var bar = new ProgressBar.Circle(container, {
   		color: '#aaa',
   		// This has to be the same size as the maximum width to
   		// prevent clipping
-  		strokeWidth: 6,
-  		trailWidth: 4,
+  		strokeWidth: avgStroke,
+  		trailWidth: avgTrail,
   		easing: 'easeInOut',
-  		duration: 10000,
+  		duration: avgLoading,
   		text: {
     		autoStyleContainer: false
   		},
-  		from: { color: '#aaa', width: 4 },
-  		to: { color: '#05f', width: 6 },
+  		from: { color: '#aaa', width: avgTrail },
+  		to: { color: '#253E6B', width: avgStroke },
   		// Set default step function for all animate calls
   		step: function(state, circle) {
     		circle.path.setAttribute('stroke', state.color);
@@ -208,38 +223,180 @@
     		} else {
 				circle.setText(value + "%");
     		}
-			
-			if (value == 100) {
-				finalMessage.innerHTML = "Process is complete.";
-			}
   		}
 	});
 	bar.text.style.fontFamily = 'Helvetica, sans-serif';
 	bar.text.style.fontSize = '5rem';
 	bar.text.style.color= '#333';
 	
+	var bar1 = new ProgressBar.Circle(container1, {
+  		color: '#aaa',
+  		// This has to be the same size as the maximum width to
+  		// prevent clipping
+  		strokeWidth: avgStroke,
+  		trailWidth: avgTrail,
+  		easing: 'easeInOut',
+  		duration: avgLoading,
+  		text: {
+    		autoStyleContainer: false
+  		},
+  		from: { color: '#aaa', width: avgTrail },
+  		to: { color: '#96B53C', width: avgStroke },
+  		// Set default step function for all animate calls
+  		step: function(state, circle) {
+    		circle.path.setAttribute('stroke', state.color);
+    		circle.path.setAttribute('stroke-width', state.width);
+			
+			var value = Math.round(circle.value() * 100);
+    		if (value === 0) {
+     			circle.setText('');
+    		} else {
+				circle.setText(value + "%");
+    		}
+  		}
+	});
+	bar1.text.style.fontFamily = 'Helvetica, sans-serif';
+	bar1.text.style.fontSize = '5rem';
+	bar1.text.style.color= '#333';
+	
+	var bar2 = new ProgressBar.Circle(container2, {
+  		color: '#aaa',
+  		// This has to be the same size as the maximum width to
+  		// prevent clipping
+  		strokeWidth: avgStroke,
+  		trailWidth: avgTrail,
+  		easing: 'easeInOut',
+  		duration: avgLoading,
+  		text: {
+    		autoStyleContainer: false
+  		},
+  		from: { color: '#aaa', width: avgTrail },
+  		to: { color: '#ED802C', width: avgStroke },
+  		// Set default step function for all animate calls
+  		step: function(state, circle) {
+    		circle.path.setAttribute('stroke', state.color);
+    		circle.path.setAttribute('stroke-width', state.width);
+			
+			var value = Math.round(circle.value() * 100);
+    		if (value === 0) {
+     			circle.setText('');
+    		} else {
+				circle.setText(value + "%");
+    		}
+  		}
+	});
+	bar2.text.style.fontFamily = 'Helvetica, sans-serif';
+	bar2.text.style.fontSize = '5rem';
+	bar2.text.style.color= '#333';
+	
+	var bar3 = new ProgressBar.Circle(container3, {
+  		color: '#aaa',
+  		// This has to be the same size as the maximum width to
+  		// prevent clipping
+  		strokeWidth: avgStroke,
+  		trailWidth: avgTrail,
+  		easing: 'easeInOut',
+  		duration: avgLoading,
+  		text: {
+    		autoStyleContainer: false
+  		},
+  		from: { color: '#aaa', width: avgTrail },
+  		to: { color: '#97B0D0', width: avgStroke },
+  		// Set default step function for all animate calls
+  		step: function(state, circle) {
+    		circle.path.setAttribute('stroke', state.color);
+    		circle.path.setAttribute('stroke-width', state.width);
+			
+			var value = Math.round(circle.value() * 100);
+    		if (value === 0) {
+     			circle.setText('');
+    		} else {
+				circle.setText(value + "%");
+    		}
+  		}
+	});
+	bar3.text.style.fontFamily = 'Helvetica, sans-serif';
+	bar3.text.style.fontSize = '5rem';
+	bar3.text.style.color= '#333';
+	
+	var bar4 = new ProgressBar.Circle(container4, {
+  		color: '#aaa',
+  		// This has to be the same size as the maximum width to
+  		// prevent clipping
+  		strokeWidth: avgStroke,
+  		trailWidth: avgTrail,
+  		easing: 'easeInOut',
+  		duration: avgLoading,
+  		text: {
+    		autoStyleContainer: false
+  		},
+  		from: { color: '#aaa', width: avgTrail },
+  		to: { color: '#fff', width: avgStroke },
+  		// Set default step function for all animate calls
+  		step: function(state, circle) {
+    		circle.path.setAttribute('stroke', state.color);
+    		circle.path.setAttribute('stroke-width', state.width);
+			
+			var value = Math.round(circle.value() * 100);
+    		if (value === 0) {
+     			circle.setText('');
+    		} else {
+				circle.setText(value + "%");
+    		}
+			// Last progress bar shows the final message
+			if (value == 100) {
+				finalMessage.innerHTML = "Done!";
+			}
+  		}
+	});
+	bar4.text.style.fontFamily = 'Helvetica, sans-serif';
+	bar4.text.style.fontSize = '5rem';
+	bar4.text.style.color= '#333';
+	
 	function search() {
 		var search = document.getElementById("srchbox").value;
 		var searchtext = document.getElementById("searchtext");
-		if(search==""){
+		if (search == "") {
 			document.getElementById("eswdiv").style.opacity="0.7";
 		} else {
 			document.getElementById("eswdiv").style.opacity="0";
 			document.getElementById("main2").style="transition-delay:0.3s; top:5%; opacity:1;";
-		document.getElementById("main1").style="transition-delay:0s; opacity:0; top:-20%;";
-		var main1 = document.getElementById("main1");
-		main1.style.top="-20%";		
-		searchtext.innerHTML = "Searching " + search + "...";
+			document.getElementById("main1").style="transition-delay:0s; opacity:0; top:-20%;";
+			var main1 = document.getElementById("main1");
+			main1.style.top="-20%";		
+			searchtext.innerHTML = "Searching " + search + "...";
+			loadingBar();
+			setTimeout(loadingBar1, 1000);
+			setTimeout(loadingBar2, 2000);
+			setTimeout(loadingBar3, 3000);
+			setTimeout(loadingBar4, 4000);
 		}
-		
 	}
 	
 	function back() {
 		document.getElementById("main2").style="transition-delay:0s; opacity:0;";
 		document.getElementById("main1").style="transition-delay:0.3s; top:45%;";
 	}
-	function progressBarSim() {
+
+	function loadingBar() {
+		info.innerHTML = "Searching for tweets...";
 		bar.animate(1.0);  // Number from 0.0 to 1.0
+	}
+	function loadingBar1() {
+		info1.innerHTML = "Retrieving training data...";
+		bar1.animate(1.0);  
+	}
+	function loadingBar2() {
+		info2.innerHTML = "Preprocessing data...";
+		bar2.animate(1.0);  
+	}
+	function loadingBar3() {
+		info3.innerHTML = "Training data...";
+		bar3.animate(1.0);  
+	}
+	function loadingBar4() {
+		info4.innerHTML = "Retrieving results...";
+		bar4.animate(1.0);  
 	}
 </script>
 </body>
