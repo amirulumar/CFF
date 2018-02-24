@@ -15,38 +15,40 @@
  		color:#B8B8B8;
 	}
 	
-	.bgimage{
-		background-image: url(img/cornfieldbg.jpg);
-		width: 100%;
-		height: 100vh;
-		top: 0;
-		left: 0;
-		z-index: -1;
+.bgimage{
+	background-image: url(img/cornfieldbg.jpg);
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: -1;
 		filter:blur(6px)
-		brightness(75%);
+			brightness(75%);
+		
 	}
 	
 	/* first page div*/
-	.main1 {
-		transition: all 1s ease;
-		position: absolute;
-		top: 45%;
-		width: 50%;
-		left: 25%;
-		height: 80px;
-		display: block;
-	}
-	/* second page div*/
-	.main2 {
-		transition: all 1s ease;
-		transition-delay: 1.5s;
-		opacity: 0;
-		position: absolute;
-		width: 100%;
-		height: 90%;
-		top: 100%;
-		disabled: true;
-	}
+.main1 {
+	transition: all 1s ease;
+	position: absolute;
+	top: 45%;
+	width: 50%;
+	left: 25%;
+	height: 80px;
+	display: block;
+}
+/* second page div*/
+.main2 {
+	transition: all 1s ease;
+	transition-delay: 1.5s;
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	height: 90%;
+	top: 100%;
+}
+	
+/* third page div*/
 	.main3 {
 		transition: all 1s ease;
 		opacity: 0;
@@ -55,83 +57,96 @@
 		top: 200%;
 		height: 90vh;
 	}
-	/*dropdown menu*/
-	.drpdwn {
-		font-size: 25px;
-		transition: background-color .5s ease;
-		/*margin-top: 20%;*/
-		margin-left: 1%;
-		height: 100%;
-		width: 30%;
-		height: 75%;
-	}
-	.drpdwn:hover {
-		background-color: #C44346;
-	}
-	.drpdwn:focus {
-		background-color: #C44346;
-	}
-	/*search box*/
-	.srchbox {
-		padding: 5px;
-		font-size: 25px;
-		transition: background-color .5s ease;
-		border: thin;
-		height: 75%;
-		width: 66%;
-	}
+/*dropdown menu*/
+.drpdwn {
+	font-size: 25px;
+	transition: background-color .5s ease;
+	/*margin-top: 20%;*/
+	margin-left: 1%;
+	height: 100%;
+	width: 30%;
+	height: 75%;
+
+}
+	
+.drpdwn:hover {
+	background-color: #C44346;
+}
+.drpdwn:focus {
+	background-color: #C44346;
+}
+/*search box*/
+.srchbox {
+	padding: 5px;
+	font-size: 25px;
+	transition: background-color .5s ease;
+	border: thin;
+	height: 75%;
+	width: 66%;
+}
 	
 	.srchbox:hover {
-		background-color: #C44346;
-	}
+	background-color: #C44346;
+}
 	
-	.srchbox:focus {
-		background-color: #C44346;
-	}
-	/*search button*/
-	#srchbtn {
-		transition: all .5s ease;
-		background: #333;
-		position: absolute;
-		border: thin #FFFFFF;
-		width: 25%;
-		margin-top: 10%;
-		height: 75%;
-		left: 37.5%;
-	}
-	#srchbtn:hover {
-		color: #FFFFFF;
-		background-color: #C44346;
-	}
+.srchbox:focus {
+	background-color: #C44346;
+}
+/*search button*/
+#srchbtn {
+	transition: all .5s ease;
+	background: #333;
+	position: absolute;
+	border: thin #FFFFFF;
+	width: 25%;
+	margin-top: 10%;
+	height: 75%;
+	left: 37.5%;
+}
+#srchbtn:hover {
+	color: #FFFFFF;
+	background-color: #C44346;
+}
 	
-	.eswdiv {
+	.eswdiv{
 		transition: all .5s ease-in;
 		margin-top: 20%;
 		background-color: #E00003;
 		opacity: 0;
 	}
-	.eswdiv p {
+	.eswdiv p{
 		color: white;
 		font-weight: bold;
 		opacity: 1;
 	}
-	
-	/* "Searching..." text after clicking search button*/
-	#searchtext {
-		font-size: 50px;
-	}
+
+/* "Searching..." text after clicking search button*/
+#searchtext {
+	font-size: 50px;
+}
 	
 	#backbtn{
-		transition: all 0.5s ease;
-		border: none;
-		background: #333;
+	transition: all 0.5s ease;
+	border: none;
+	background: #333;
 		position: absolute;
-		left: 90%;
-		top: 90%;
+	left: 90%;
+		top:90%;
 	}
 	#backbtn:hover{
 		background: #C44346;
-		
+	}
+	
+	#cancelbtn{
+	transition: all 0.5s ease;
+	border: none;
+	background: #333;
+		position: absolute;
+	left: 90%;
+		top:90%;
+	}
+	#cancelbtn:hover{
+		background: #C44346;
 	}
 	h4 {
 		text-align: center;
@@ -394,8 +409,9 @@
 	}
 	
 	function back() {
-		document.getElementById("main2").style="transition-delay:0s; opacity:0;";
+		document.getElementById("main3").style="transition-delay:0s; opacity:0;";
 		document.getElementById("main1").style="transition-delay:0.3s; top:45%;";
+		document.getElementById("main2").style="transition-delay:0s; opacity:0; top:100%;"
 	}
 	
 	function progresscomplete() {
