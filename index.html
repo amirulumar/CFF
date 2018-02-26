@@ -157,6 +157,11 @@
   		height: 200px;
   		position: relative;
 	}
+	#resultimg {
+		height: 30%;
+		display: block;
+		margin: auto;
+	}
 </style>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -210,6 +215,8 @@
 </div>
 	
 <div class="main3" id="main3">
+	<p id="completedtext" style="font-size: 50px;">Processing done!</p>
+	<img id="resultimg" alt="Result" src="img/positive.png">
 	<button id="backbtn" onClick="back()" type="button" class="btn btn-default">Back</button>
 </div>
 	
@@ -398,7 +405,14 @@
 			setTimeout(loadingBar2, 2000);
 			setTimeout(loadingBar3, 3000);
 			setTimeout(loadingBar4, 4000);
-			timer = setTimeout(progresscomplete, 10000);
+			timer = setTimeout(progresscomplete, 3000);
+			
+			//condition to select result image (positive or negative)
+			if(search=="corn") {
+				document.getElementById("resultimg").src="img/negative.png";
+			} else {
+				document.getElementById("resultimg").src="img/positive.png";
+			}
 		}
 	}
 	
