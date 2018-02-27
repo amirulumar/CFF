@@ -15,41 +15,38 @@
  		color:#B8B8B8;
 	}
 	
-
-.bgimage{
-	background-image: url(img/cornfieldbg.jpg);
-	width: 100%;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	filter:blur(6px) brightness(72%);
-	border: 0;
-	transform: scale(1.05);
+	.bgimage{
+		background-image: url(img/cornfieldbg.jpg);
+		width: 100%;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		filter:blur(6px)
+		brightness(75%);
 	}
 	
 	/* first page div*/
-.main1 {
-	transition: all 1s ease;
-	position: absolute;
-	top: 23%;
-	width: 50%;
-	left: 25%;
-	height: 80px;
-	display: block;
-}
-/* second page div*/
-.main2 {
-	transition: all 1s ease;
-	transition-delay: 1.5s;
-	opacity: 0;
-	position: absolute;
-	width: 100%;
-	height: 90%;
-	top: 100%;
-}
-	
-/* third page div*/
+	.main1 {
+		transition: all 1s ease;
+		position: absolute;
+		top: 45%;
+		width: 50%;
+		left: 25%;
+		height: 80px;
+		display: block;
+	}
+	/* second page div*/
+	.main2 {
+		transition: all 1s ease;
+		transition-delay: 1.5s;
+		opacity: 0;
+		position: absolute;
+		width: 100%;
+		height: 90%;
+		top: 100%;
+		disabled: true;
+	}
 	.main3 {
 		transition: all 1s ease;
 		opacity: 0;
@@ -151,7 +148,6 @@
   		height: 200px;
   		position: relative;
 	}
-	
 	#descboxmain2 {
 		border: 4px solid black;
 		margin: auto;
@@ -159,11 +155,13 @@
 		width: 50%;
 		margin-top: 12%;
 	}
-	
 	#resultimg {
 		height: 30%;
 		display: block;
 		margin: auto;
+	}
+	#polarityValue {
+		color: white;
 	}
 </style>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -177,9 +175,9 @@
 
 <body>
 <div class="bgimage"></div>
+	
 <div class="main1" id="main1">
-	<img alt="CFF" style="display: block; margin: 2% auto; margin-bottom: 10%; height: 100%;" src="img/cfflogo.png">
-  <input type="search" class="srchbox" id="srchbox" placeholder="Search crop...">
+ <img alt="CFF" style="display: block; margin: 2% auto; margin-bottom: 10%; height: 100%;" src="img/cfflogo.png"> <input type="search" class="srchbox" id="srchbox" placeholder="Search crop...">
   <select name="select" class="drpdwn"> 
     <option value="8hours">past 8 hours</option>
     <option value="16hours">past 16 hours</option>
@@ -223,8 +221,7 @@
 	
 <div class="main3" id="main3">
 	<p id="completedtext" style="font-size: 50px;">Processing done!</p>
-	<img id="resultimg" alt="Result" src="img/positive.png">
-	<p id="resultsText"></p>
+	<img id="resultimg" alt="Result" src="img/positive.png"><p id="resultsText"></p>
 	<p>Overall impression is <span id="positivity"></span>!</p>
 	<p>Polarity: <span id="polarityValue"></span></p>
 	<p>Trained data overview:</p>
@@ -415,10 +412,10 @@
 			setTimeout(loadingBar2, 2000);
 			setTimeout(loadingBar3, 3000);
 			setTimeout(loadingBar4, 4000);
-			timer = setTimeout(progresscomplete, 3000);
+			timer = setTimeout(progresscomplete, 5000);
 			
 			//condition to select result image (positive or negative)
-			if(search=="corn") {
+			if (search == "corn") {
 				document.getElementById("resultimg").src="img/negative.png";
 			} else {
 				document.getElementById("resultimg").src="img/positive.png";
@@ -427,22 +424,25 @@
 	}
 	
 	function cancel() {
-
+		document.getElementById("main1").style="transition-delay:0.3s; top:45%;";
 		document.getElementById("main2").style="transition-delay:0s; opacity:0;";
-		document.getElementById("main1").style="transition-delay:0.3s; top:23%;";
-		clearTimeout(timer);
 	}
 	
 	function back() {
+		document.getElementById("main1").style="transition-delay:0.3s; top:45%;";
+		document.getElementById("main2").style="transition-delay:0s; opacity:0; top:100%;";
 		document.getElementById("main3").style="transition-delay:0s; opacity:0;";
-		document.getElementById("main1").style="transition-delay:0.3s; top:23%;";
-		document.getElementById("main2").style="transition-delay:0s; opacity:0; top:100%;"
 	}
 	
 	function progresscomplete() {
 		var search = document.getElementById("srchbox").value;
 		var impression = document.getElementById("positivity");
-		var polarity = 27;
+		var polarity;
+		if (search == "corn") {
+			polarity = 27;
+		} else {
+			polarity = 58; 
+		}
 		document.getElementById("main2").style="transition-delay:0s; opacity:0; top:-100%;";
 		document.getElementById("main3").style="transition-delay:0.3s; top:5%; opacity:1;";
 		resultsText.innerHTML = "Results for " + search + ":";
