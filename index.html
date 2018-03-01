@@ -269,6 +269,10 @@
     		} else {
 				circle.setText(value + "%");
     		}
+			
+			if (value == 100) {
+				loadingBar1();
+			}
   		}
 	});
 	bar.text.style.fontFamily = 'Helvetica, sans-serif';
@@ -299,6 +303,10 @@
     		} else {
 				circle.setText(value + "%");
     		}
+			
+			if (value == 100) {
+				loadingBar2();
+			}
   		}
 	});
 	bar1.text.style.fontFamily = 'Helvetica, sans-serif';
@@ -329,6 +337,10 @@
     		} else {
 				circle.setText(value + "%");
     		}
+			
+			if (value == 100) {
+				loadingBar3();
+			}
   		}
 	});
 	bar2.text.style.fontFamily = 'Helvetica, sans-serif';
@@ -359,6 +371,10 @@
     		} else {
 				circle.setText(value + "%");
     		}
+			
+			if (value == 100) {
+				loadingBar4();
+			}
   		}
 	});
 	bar3.text.style.fontFamily = 'Helvetica, sans-serif';
@@ -416,12 +432,7 @@
 			main1.style.top="-20%";		
 			searchtext.innerHTML = "Searching " + search + "...";
 			loadingBar();
-			setTimeout(loadingBar1, 1000);
-			setTimeout(loadingBar2, 2000);
-			setTimeout(loadingBar3, 3000);
-			setTimeout(loadingBar4, 4000);
 			timer = setTimeout(progresscomplete, 6000);
-
 			
 			//condition to select result image (positive or negative)
 			if (search == "corn") {
