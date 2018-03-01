@@ -200,7 +200,7 @@
 	<table style="width:100%">
 		<tbody>
 			<tr>
-				<td><div id="container"></div></td>
+				<td><div id="container" onMouseOver="desc(this.id)"></div></td>
 				<td><div id="container1"></div></td>
 				<td><div id="container2"></div></td>
 				<td><div id="container3"></div></td>
@@ -217,7 +217,7 @@
 	</table>
 	<h3 id="finalMessage"></h3>
 	<div id="descboxmain2">
-		<p>Description</p>
+		<p id="descriptiontxt">Description</p>
 	</div>
   <button id="cancelbtn" onClick="cancel()" type="button" class="btn btn-default">Cancel</button>
 	<button id="results" onClick="progresscomplete()" type="button" class="btn btn-default">Show Results</button>
@@ -435,6 +435,7 @@
 	function cancel() {
 		document.getElementById("main1").style="transition-delay:0.3s; top:25%;";
 		document.getElementById("main2").style="transition-delay:0s; opacity:0;";
+		clearTimeout(timer);
 		stopAll();
 		resetAll();
 	}
@@ -469,6 +470,11 @@
 			impression.innerHTML = "neutral";
 		}
 		document.getElementById("polarityValue").innerHTML = polarity + "%";
+	}
+	
+	//description box contents
+	function desc(id) {
+		document.getElementById("descriptiontxt").innerHTML="Chhayalalo";
 	}
 
 	function loadingBar() {
