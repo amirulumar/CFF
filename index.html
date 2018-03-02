@@ -200,11 +200,11 @@
 	<table style="width:100%">
 		<tbody>
 			<tr>
-				<td><div id="container" onMouseOver="desc(this.id)"></div></td>
-				<td><div id="container1"></div></td>
-				<td><div id="container2"></div></td>
-				<td><div id="container3"></div></td>
-				<td><div id="container4"></div></td>
+				<td><div id="container" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
+				<td><div id="container1" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
+				<td><div id="container2" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
+				<td><div id="container3" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
+				<td><div id="container4" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
 			</tr>
 			<tr>
 				<td><h4 id="info"></h4></td>
@@ -485,7 +485,27 @@
 	
 	//description box contents
 	function desc(id) {
-		document.getElementById("descriptiontxt").innerHTML="Searching for tweets";
+		switch(id){
+			case "container":
+				document.getElementById("descriptiontxt").innerHTML="Searching for tweets";
+				break;
+			case "container1":
+				document.getElementById("descriptiontxt").innerHTML="Retrieving training data";
+				break;
+			case "container2":
+				document.getElementById("descriptiontxt").innerHTML="Preprocessing data";
+				break;
+			case "container3":
+				document.getElementById("descriptiontxt").innerHTML="Training data";
+				break;
+			case "container4":
+				document.getElementById("descriptiontxt").innerHTML="Retrieving results";
+				break;
+		}
+	}
+
+	function descdft() {
+		document.getElementById("descriptiontxt").innerHTML="Description";
 	}
 
 	function loadingBar() {
