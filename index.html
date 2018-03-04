@@ -155,9 +155,9 @@
 	#descboxmain2 {
 		border: 4px solid black;
 		margin: auto;
-		height: 20%;
+		height: 30%;
 		width: 50%;
-		margin-top: 10%;
+		margin-top: 5%;
 	}
 	#resultimg {
 		height: 30%;
@@ -217,7 +217,7 @@
 	</table>
 	<h3 id="finalMessage"></h3>
 	<div id="descboxmain2">
-		<p id="descriptiontxt">Description</p>
+		<p id="descriptiontxt" onload="descdft()"></p>
 	</div>
   <button id="cancelbtn" onClick="cancel()" type="button" class="btn btn-default">Cancel</button>
 	<button id="results" onClick="progresscomplete()" type="button" class="btn btn-default">Show Results</button>
@@ -432,7 +432,6 @@
 			main1.style.top="-20%";		
 			searchtext.innerHTML = "Searching " + search + "...";
 			loadingBar();
-			timer = setTimeout(progresscomplete, 6000);
 			
 			//condition to select result image (positive or negative)
 			if (search == "corn") {
@@ -446,7 +445,6 @@
 	function cancel() {
 		document.getElementById("main1").style="transition-delay:0.3s; top:25%;";
 		document.getElementById("main2").style="transition-delay:0s; opacity:0;";
-		clearTimeout(timer);
 		stopAll();
 		resetAll();
 	}
@@ -487,25 +485,25 @@
 	function desc(id) {
 		switch(id){
 			case "container":
-				document.getElementById("descriptiontxt").innerHTML="Searching for tweets";
+				document.getElementById("descriptiontxt").innerHTML="Searching for tweets<br><h1>Building the Testing dataset by looking up tweets that contain the keyword(s) &quot" + document.getElementById("srchbox").value + "&quot</h1>";
 				break;
 			case "container1":
-				document.getElementById("descriptiontxt").innerHTML="Retrieving training data";
+				document.getElementById("descriptiontxt").innerHTML="Retrieving training data<br><h1>Building the Training dataset by looking up trained tweets that contain the keyword(s) &quot" + document.getElementById("srchbox").value + "&quot</h1>";
 				break;
 			case "container2":
-				document.getElementById("descriptiontxt").innerHTML="Preprocessing data";
+				document.getElementById("descriptiontxt").innerHTML="Preprocessing data<br><h1>Converting retrieved tweets (both trained and untrained) to lower-case while removing links, hashtags and usernames (if any)</h1>";
 				break;
 			case "container3":
-				document.getElementById("descriptiontxt").innerHTML="Training data";
+				document.getElementById("descriptiontxt").innerHTML="Training data<br><h1>Using Naive Bayes' Classification to get the polarity and the number of matching tweets</h1>";
 				break;
 			case "container4":
-				document.getElementById("descriptiontxt").innerHTML="Retrieving results";
+				document.getElementById("descriptiontxt").innerHTML="Retrieving results<br><h1>Calculating the overall polarity percentage from the newly-trained data</h1>";
 				break;
 		}
 	}
 
 	function descdft() {
-		document.getElementById("descriptiontxt").innerHTML="Description";
+		document.getElementById("descriptiontxt").innerHTML="Description<br><h1>Hover on progress bars to see description of task being performed</h1>";
 	}
 
 	function loadingBar() {
