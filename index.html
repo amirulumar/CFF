@@ -15,6 +15,10 @@
  		color:#B8B8B8;
 	}
 	
+	html * {
+		font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	}
+	
 	.bgimage{
 		background-image: url(img/cornfieldbg.jpg);
 		width: 100%;
@@ -133,9 +137,11 @@
 		left: 90%;
 		top: 90%;
 	}
-	#backbtn:hover, #cancelbtn:hover, #results:hover {
-		background: #C44346;
-		
+	#backbtn:hover, #cancelbtn:hover {
+		background: #ed802c;
+	}
+	#results:hover {
+		background: #96b53c;
 	}
 	#cancelbtn {
 		left: 5%;
@@ -147,17 +153,26 @@
 		text-align: center;
 	}
 	#container, #container1, #container2, #container3, #container4 {
+		border-radius: 50%;
   		margin: auto;
   		width: 200px;
   		height: 200px;
   		position: relative;
 	}
-	#descboxmain2 {
-		border: 4px solid black;
+	#container:hover, #container1:hover, #container2:hover, #container3:hover, #container4:hover {
+		background: #C0C0C0;
+		cursor: pointer;
+	}
+	#descboxmain1, #descboxmain2 {
+		border: 2px solid black;
+		width: 40%;
 		margin: auto;
-		height: 30%;
-		width: 50%;
 		margin-top: 5%;
+		background: #ffffff;
+	}
+	#descboxmain1 {
+		width: 50%;
+		height: 30%;
 	}
 	#resultimg {
 		height: 30%;
@@ -165,7 +180,19 @@
 		margin: auto;
 	}
 	#polarityValue {
-		color: white;
+		color: #808080;
+	}
+	#resultsTable {
+		border: 2px solid black;
+		width: 90%;
+		margin: auto;
+		background-color: #ffffff;
+	}
+	th {
+		text-align: center;
+	}
+	.polarityCheck {
+		text-align: center;
 	}
 </style>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -174,7 +201,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/amaranth:n4:default;expletus-sans:n4:default;jura:n4,n3,n6:default;orbitron:n3:default;play:n4:default;raleway:n1:default.js" type="text/javascript"></script>
+<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
 </head>
 
 <body>
@@ -182,12 +209,12 @@
 	
 <div class="main1" id="main1">
  <img alt="CFF" style="display: block; margin: 2% auto; margin-bottom: 10%; height: 100%;" src="img/cfflogo.png"> <input type="search" class="srchbox" id="srchbox" placeholder="Search crop...">
-  <select name="select" class="drpdwn"> 
-    <option value="8hours">past 8 hours</option>
-    <option value="16hours">past 16 hours</option>
-    <option value="1day">past day</option>
-    <option value="7days">past week</option>
-    <option value="14days">past weeks</option>
+  <select name="select" class="drpdwn" id="tweet"> 
+    <option value="1000">1,000 tweets</option>
+    <option value="2000">2,000 tweest</option>
+    <option value="5000">5,000 tweets</option>
+    <option value="10000">10,000 tweets</option>
+    <option value="all">whole database</option>
   </select>
   <button onClick="search()" id="srchbtn" type="button" class="btn btn-default">Search</button>
 	
@@ -216,7 +243,7 @@
 		</tbody>
 	</table>
 	<h3 id="finalMessage"></h3>
-	<div id="descboxmain2">
+	<div id="descboxmain1">
 		<p id="descriptiontxt" onload="descdft()"></p>
 	</div>
   <button id="cancelbtn" onClick="cancel()" type="button" class="btn btn-default">Cancel</button>
@@ -224,11 +251,29 @@
 </div>
 	
 <div class="main3" id="main3">
-	<p id="completedtext" style="font-size: 50px;">Processing done!</p>
-	<img id="resultimg" alt="Result"><p id="resultsText"></p>
-	<p>Overall impression is <span id="positivity"></span>!</p>
-	<p>Polarity: <span id="polarityValue"></span></p>
+	<div id="descboxmain2">
+		<p>Overall impression is <span id="positivity"></span>!</p>
+		<p>Polarity: <span id="polarityValue"></span></p>
+	</div>
+	<img id="resultimg" alt="Result">
+	<p id="resultsText"></p>
 	<p>Trained data overview:</p>
+	<table id="resultsTable" class="table-bordered">
+		<tbody>
+			<tr>
+				<th>Tweets</th>
+				<th style="width:20%">Result</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="polarityCheck" style="color:#00ff00">&#10004;</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="polarityCheck" style="color:#ff0000">&#10006;</td>
+			</tr>
+		</tbody>
+	</table>
 	<button id="backbtn" onClick="back()" type="button" class="btn btn-default">Back</button>
 </div>
 	
@@ -240,6 +285,7 @@
 	// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
 		
 	var finalMessage = document.getElementById('finalMessage');
+	var tweetAmount = document.getElementById('tweet');
 	var avgStroke = 6;
 	var avgTrail = 4;
 	// Loading times may vary per progress bar, used for debugging purposes for now
@@ -459,6 +505,7 @@
 	function progresscomplete() {
 		var search = document.getElementById("srchbox").value;
 		var impression = document.getElementById("positivity");
+		var results = document.getElementById("resultsText");
 		var polarity;
 		if (search == "corn") {
 			polarity = 27;
@@ -467,18 +514,35 @@
 		}
 		document.getElementById("main2").style="transition-delay:0s; opacity:0; top:-100%;";
 		document.getElementById("main3").style="transition-delay:0.3s; top:5%; opacity:1;";
-		resultsText.innerHTML = "Results for " + search + ":";
+		switch(tweetAmount.value) {
+			case '1000':
+				results.innerHTML = "Results for " + search + " in the last 1,000 tweets:";
+				break;
+			case '2000':
+				results.innerHTML = "Results for " + search + " in the last 2,000 tweets:";
+				break;
+			case '5000':
+				results.innerHTML = "Results for " + search + " in the last 5,000 tweets:";
+				break;
+			case '10000':
+				results.innerHTML = "Results for " + search + " in the last 10,000 tweets:";
+				break;
+			case 'all':
+				results.innerHTML = "Results for " + search + " in the entire database:";
+				break;
+		}
 		if (polarity > 50 && polarity <= 100) {
-			impression.style = "color:green;";
+			impression.style = "color:#00b200;";
 			impression.innerHTML = "positive";
 		} else if (polarity >= 0 && polarity < 50) {
-			impression.style = "color:red;";
+			impression.style = "color:#ff0000;";
 			impression.innerHTML = "negative";
 		} else {
 			impression.style = "color:white";
 			impression.innerHTML = "neutral";
 		}
 		document.getElementById("polarityValue").innerHTML = polarity + "%";
+		
 	}
 	
 	//description box contents
