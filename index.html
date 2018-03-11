@@ -21,6 +21,7 @@
 	
 	.bgimage{
 		background-image: url(img/cornfieldbg.jpg);
+		background-size: cover;
 		width: 100%;
 		height: 100vh;
 		top: 0;
@@ -28,6 +29,7 @@
 		z-index: -1;
 		filter:blur(6px)
 		brightness(75%);
+		transform: scale(1.02);
 	}
 	
 	/* first page div*/
@@ -58,6 +60,7 @@
 		width: 100%;
 		top: 100%;
 		height: 90vh;
+		text-align: center;
 	}
 	/*dropdown menu*/
 	.drpdwn {
@@ -137,8 +140,14 @@
 		left: 90%;
 		top: 90%;
 	}
+	#backbtn {
+		top: 4%;
+		left: 5%;
+		text-align: center;
+	}
 	#backbtn:hover, #cancelbtn:hover {
 		background: #ed802c;
+		
 	}
 	#results:hover {
 		background: #96b53c;
@@ -147,7 +156,7 @@
 		left: 5%;
 	}
 	#results {
-		left: 85%;
+		left: 87%;
 	}
 	h4 {
 		text-align: center;
@@ -167,26 +176,35 @@
 		border: 2px solid black;
 		width: 40%;
 		margin: auto;
-		margin-top: 5%;
-		background: #ffffff;
+		margin-top: 0%;
+		background: rgba(255,255,255,0.36);
 	}
 	#descboxmain1 {
 		width: 50%;
 		height: 30%;
+		margin-top: 7%;
+	}
+	#descriptiontxt {
+		transition: all 0.3s ease;
 	}
 	#resultimg {
-		height: 30%;
+		/*height: 30%;
 		display: block;
-		margin: auto;
+		margin: auto;*/
+		margin-top: 1%;
+		font-size: 550%;
+		font-weight: bold;
+		color: #009300;
 	}
 	#polarityValue {
-		color: #808080;
+		color: #484848;
 	}
 	#resultsTable {
+		color :rgba(216,216,216,1.00);
 		border: 2px solid black;
 		width: 90%;
 		margin: auto;
-		background-color: #ffffff;
+		background-color: rgba(0,0,0,0.40);
 	}
 	th {
 		text-align: center;
@@ -194,6 +212,58 @@
 	.polarityCheck {
 		text-align: center;
 	}
+	
+	#home{
+		transition: all 0.5s ease;
+		top: 0%;
+		left: 0%;
+		color: white;
+		padding: 5px;
+		padding-right: 6px;
+		font-size: 40px;
+		font-weight: bold;
+		
+/*
+		position: absolute;
+		top: 2%;
+		left: 4%;
+		color: #ed802c;
+		height: 7%;
+*/
+	}
+	
+
+	
+	@-webkit-keyframes glowing {
+  0% { background-color: #6A802A; -webkit-box-shadow: 0 0 3px #6A802A; }
+  50% { background-color: #96b53c; -webkit-box-shadow: 0 0 40px #96b53c; }
+  100% { background-color: #6A802A; -webkit-box-shadow: 0 0 3px #6A802A; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #6A802A; -moz-box-shadow: 0 0 3px #6A802A; }
+  50% { background-color: #96b53c; -moz-box-shadow: 0 0 40px #96b53c; }
+  100% { background-color: #6A802A; -moz-box-shadow: 0 0 3px #6A802A; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #6A802A; box-shadow: 0 0 3px #6A802A; }
+  50% { background-color: #96b53c; box-shadow: 0 0 40px #96b53c; }
+  100% { background-color: #6A802A; box-shadow: 0 0 3px #6A802A; }
+}
+
+@keyframes glowing {
+  0% { background-color: #6A802A; box-shadow: 0 0 3px #6A802A; }
+  50% { background-color: #96b53c; box-shadow: 0 0 40px #96b53c; }
+  100% { background-color: #6A802A; box-shadow: 0 0 3px #6A802A; }
+}
+
+.button {
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
 </style>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -208,7 +278,8 @@
 <div class="bgimage"></div>
 	
 <div class="main1" id="main1">
- <img alt="CFF" style="display: block; margin: 2% auto; margin-bottom: 10%; height: 100%;" src="img/cfflogo.png"> <input type="search" class="srchbox" id="srchbox" placeholder="Search crop...">
+ <img alt="CFF" style="display: block; margin: 2% auto; margin-bottom: 10%; height: 100%;" src="img/cfflogo.png">
+	<input type="search" class="srchbox" id="srchbox" placeholder="Search crop...">
   <select name="select" class="drpdwn" id="tweet"> 
     <option value="1000">1,000 tweets</option>
     <option value="2000">2,000 tweest</option>
@@ -224,14 +295,14 @@
 	
 <div class="main2" id="main2">
   <p id="searchtext"></p>
-	<table style="width:100%">
+	<table style="width:100%; margin-top: 3%;">
 		<tbody>
 			<tr>
-				<td><div id="container" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
-				<td><div id="container1" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
-				<td><div id="container2" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
-				<td><div id="container3" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
-				<td><div id="container4" onMouseOver="desc(this.id)" onMouseOut="descdft()"></div></td>
+				<td id="c0d" onMouseOver="desc(this.id)" onMouseOut="descdft()"><div id="container"></div></td>
+				<td id="c1d" onMouseOver="desc(this.id)" onMouseOut="descdft()"><div id="container1"></div></td>
+				<td id="c2d" onMouseOver="desc(this.id)" onMouseOut="descdft()"><div id="container2"></div></td>
+				<td id="c3d" onMouseOver="desc(this.id)" onMouseOut="descdft()"><div id="container3"></div></td>
+				<td id="c4d" onMouseOver="desc(this.id)" onMouseOut="descdft()"><div id="container4"></div></td>
 			</tr>
 			<tr>
 				<td><h4 id="info"></h4></td>
@@ -247,16 +318,17 @@
 		<p id="descriptiontxt" onload="descdft()"></p>
 	</div>
   <button id="cancelbtn" onClick="cancel()" type="button" class="btn btn-default">Cancel</button>
-	<button id="results" onClick="progresscomplete()" type="button" class="btn btn-default">Show Results</button>
+	<button id="results" onClick="progresscomplete()" type="button" class="btn button btn-default">Show Results</button>
 </div>
 	
-<div class="main3" id="main3">
+<div class="main3" id="main3">	
 	<div id="descboxmain2">
 		<p>Overall impression is <span id="positivity"></span>!</p>
 		<p>Polarity: <span id="polarityValue"></span></p>
 	</div>
-	<img id="resultimg" alt="Result">
+	<!--<img id="resultimg" alt="Result">-->
 	<p id="resultsText"></p>
+	<span id="resultimg" class="glyphicon"></span>
 	<p>Trained data overview:</p>
 	<table id="resultsTable" class="table-bordered">
 		<tbody>
@@ -272,9 +344,26 @@
 				<td></td>
 				<td class="polarityCheck" style="color:#ff0000">&#10006;</td>
 			</tr>
+			<tr>
+				<td></td>
+				<td class="polarityCheck" style="color:#00ff00">&#10004;</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="polarityCheck" style="color:#ff0000">&#10006;</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="polarityCheck" style="color:#00ff00">&#10004;</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="polarityCheck" style="color:#ff0000">&#10006;</td>
+			</tr>
 		</tbody>
 	</table>
-	<button id="backbtn" onClick="back()" type="button" class="btn btn-default">Back</button>
+	
+	<button id="backbtn" onClick="back()" type="button" class="btn btn-default"><span id="home" class="glyphicon glyphicon-home"></span></button>
 </div>
 	
 	
@@ -454,10 +543,10 @@
 			// Last progress bar shows the final message
 			if (value == 100) {
 				finalMessage.innerHTML = "Done!";
-				document.getElementById("results").style = "display:block";
+				document.getElementById("results").style = "opacity: 1;";
 			} else {
 				finalMessage.innerHTML = "...";
-				document.getElementById("results").style = "display:none";
+				document.getElementById("results").style = "opacity: 0;";
 			}
   		}
 	});
@@ -481,9 +570,15 @@
 			
 			//condition to select result image (positive or negative)
 			if (search == "corn") {
-				document.getElementById("resultimg").src="img/negative.png";
+				//document.getElementById("resultimg").src="img/negative.png";
+				document.getElementById("resultimg").style="color: #ff0000;";
+				document.getElementById("resultimg").classList.remove('glyphicon-ok');
+				document.getElementById("resultimg").classList.add('glyphicon-remove');
 			} else {
-				document.getElementById("resultimg").src="img/positive.png";
+				//document.getElementById("resultimg").src="img/positive.png";
+				document.getElementById("resultimg").style="color: #009300;";
+				document.getElementById("resultimg").classList.add('glyphicon-ok');
+				document.getElementById("resultimg").classList.remove('glyphicon-remove');				
 			}
 		}
 	}
@@ -532,7 +627,7 @@
 				break;
 		}
 		if (polarity > 50 && polarity <= 100) {
-			impression.style = "color:#00b200;";
+			impression.style = "color:#009300;";
 			impression.innerHTML = "positive";
 		} else if (polarity >= 0 && polarity < 50) {
 			impression.style = "color:#ff0000;";
@@ -547,27 +642,35 @@
 	
 	//description box contents
 	function desc(id) {
+		document.getElementById("descriptiontxt").style.opacity=0;
+		setTimeout(function(){
 		switch(id){
-			case "container":
+			case "c0d":
 				document.getElementById("descriptiontxt").innerHTML="Searching for tweets<br><h1>Building the Testing dataset by looking up tweets that contain the keyword(s) &quot" + document.getElementById("srchbox").value + "&quot</h1>";
 				break;
-			case "container1":
+			case "c1d":
 				document.getElementById("descriptiontxt").innerHTML="Retrieving training data<br><h1>Building the Training dataset by looking up trained tweets that contain the keyword(s) &quot" + document.getElementById("srchbox").value + "&quot</h1>";
 				break;
-			case "container2":
+			case "c2d":
 				document.getElementById("descriptiontxt").innerHTML="Preprocessing data<br><h1>Converting retrieved tweets (both trained and untrained) to lower-case while removing links, hashtags and usernames (if any)</h1>";
 				break;
-			case "container3":
+			case "c3d":
 				document.getElementById("descriptiontxt").innerHTML="Training data<br><h1>Using Naive Bayes' Classification to get the polarity and the number of matching tweets</h1>";
 				break;
-			case "container4":
+			case "c4d":
 				document.getElementById("descriptiontxt").innerHTML="Retrieving results<br><h1>Calculating the overall polarity percentage from the newly-trained data</h1>";
 				break;
 		}
+		document.getElementById("descriptiontxt").style.opacity=1;
+		},300);
 	}
 
 	function descdft() {
+		document.getElementById("descriptiontxt").style.opacity=0;
+		setTimeout(function(){
 		document.getElementById("descriptiontxt").innerHTML="Description<br><h1>Hover on progress bars to see description of task being performed</h1>";
+			document.getElementById("descriptiontxt").style.opacity=1;
+		}, 300);
 	}
 
 	function loadingBar() {
