@@ -202,7 +202,7 @@
 	#resultsTable {
 		color :rgba(216,216,216,1.00);
 		border: 2px solid black;
-		width: 90%;
+		width: 100%;
 		margin: auto;
 		background-color: rgba(0,0,0,0.40);
 	}
@@ -330,30 +330,40 @@
 	<p id="resultsText"></p>
 	<span id="resultimg" class="glyphicon"></span>
 	<p>Trained data overview:</p>
-	<table id="resultsTable" class="table-bordered">
-		<tbody>
+    <div style="height: 35%; width: 90%; margin: auto; overflow: auto;">
+      <table id="resultsTable" class="table-bordered">
+        <tbody>
+          <tr>
+            <th>Tweets</th>
+            <th style="width:20%">Result</th>
+            </tr>
+          <tr>
+            <td></td>
+            <td class="polarityCheck" style="color:#00ff00">&#10004;</td>
+            </tr>
+          <tr>
+            <td></td>
+            <td class="polarityCheck" style="color:#ff0000">&#10006;</td>
+            </tr>
+          <tr>
+            <td></td>
+            <td class="polarityCheck" style="color:#00ff00">&#10004;</td>
+            </tr>
+          <tr>
+            <td></td>
+            <td class="polarityCheck" style="color:#ff0000">&#10006;</td>
+            </tr>
 			<tr>
-				<th>Tweets</th>
-				<th style="width:20%">Result</th>
-			</tr>
-			<tr>
-				<td></td>
-				<td class="polarityCheck" style="color:#00ff00">&#10004;</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td class="polarityCheck" style="color:#ff0000">&#10006;</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td class="polarityCheck" style="color:#00ff00">&#10004;</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td class="polarityCheck" style="color:#ff0000">&#10006;</td>
-			</tr>
-		</tbody>
-	</table>
+            <td></td>
+            <td class="polarityCheck" style="color:#00ff00">&#10004;</td>
+            </tr>
+          <tr>
+            <td></td>
+            <td class="polarityCheck" style="color:#ff0000">&#10006;</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
 	
 	<button id="backbtn" onClick="back()" type="button" class="btn btn-default"><span id="home" class="glyphicon glyphicon-home"></span></button>
 </div>
