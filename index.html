@@ -9,7 +9,13 @@
 <style type="text/css">
 	body {
     	overflow:hidden;
+		overflow: -moz-scrollbars-none;
 	}
+	
+	::webkit-scrollbar {
+		display: none;
+	}
+
 	
 	::placeholder {
  		color:#B8B8B8;
@@ -61,6 +67,7 @@
 		top: 100%;
 		height: 90vh;
 		text-align: center;
+		overflow: hidden;
 	}
 	/*dropdown menu*/
 	.drpdwn {
@@ -73,10 +80,10 @@
 		height: 75%;
 	}
 	.drpdwn:hover {
-		background-color: #C44346;
+		background-color: #E77013;
 	}
 	.drpdwn:focus {
-		background-color: #C44346;
+		background-color: #E77013;
 	}
 	/*search box*/
 	.srchbox {
@@ -89,11 +96,11 @@
 	}
 	
 	.srchbox:hover {
-		background-color: #C44346;
+		background-color: #E77013;
 	}
 	
 	.srchbox:focus {
-		background-color: #C44346;
+		background-color: #E77013;
 	}
 	/*search button*/
 	#srchbtn {
@@ -108,7 +115,7 @@
 	}
 	#srchbtn:hover {
 		color: #FFFFFF;
-		background-color: #C44346;
+		background-color: #E77013;
 	}
 	
 	.eswdiv {
@@ -179,10 +186,10 @@
 		margin-top: 0%;
 		background: rgba(255,255,255,0.36);
 	}
-	#descboxmain1 {
+	#descboxmain1 {		
 		width: 50%;
-		height: 30%;
-		margin-top: 2%;
+		height: 30vh;
+		margin-top: 1%;		
 	}
 	#descriptiontxt {
 		transition: all 0.3s ease;
@@ -202,8 +209,15 @@
 	#resultsTable {
 		color :rgba(216,216,216,1.00);
 		border: 2px solid black;
-		width: 100%;
+		width: 90%;
 		margin: auto;
+		background-color: rgba(0,0,0,0.40);
+	}
+	#tweets {
+		position: absolute;
+		color :rgba(216,216,216,1.00);
+		border: 2px solid black;
+		width: 94.35%;
 		background-color: rgba(0,0,0,0.40);
 	}
 	th {
@@ -222,14 +236,6 @@
 		padding-right: 6px;
 		font-size: 40px;
 		font-weight: bold;
-		
-/*
-		position: absolute;
-		top: 2%;
-		left: 4%;
-		color: #ed802c;
-		height: 7%;
-*/
 	}
 	
 
@@ -278,7 +284,7 @@
 <div class="bgimage"></div>
 	
 <div class="main1" id="main1">
- <img alt="CFF" style="display: block; margin: 2% auto; margin-bottom: 10%; height: 100%;" src="img/cfflogo.png">
+ <img alt="CFF" style="display: block; margin: -2% auto; margin-bottom: 10%; height: 150%;" src="img/logo.png">
 	<input type="search" class="srchbox" id="srchbox" placeholder="Search crop...">
   <select name="select" class="drpdwn" id="tweet"> 
     <option value="1000">1,000 tweets</option>
@@ -330,16 +336,21 @@
 	<p id="resultsText"></p>
 	<span id="resultimg" class="glyphicon"></span>
 	<p>Trained data overview:</p>
-    <div style="height: 35%; width: 90%; margin: auto; overflow: auto;">
+    
       <table id="resultsTable" class="table-bordered">
         <tbody>
           <tr>
             <th>Tweets</th>
             <th style="width:20%">Result</th>
             </tr>
+		  </tbody>
+		</table>
+	<div style="position: absolute; left: 0; right: 0; height: 25vh; width: 96.5%; margin: auto; margin-right: -1.5%; overflow:auto;">
+		  <table id="tweets" class="table-bordered">
+			  <tbody>
           <tr>
-            <td></td>
-            <td class="polarityCheck" style="color:#00ff00">&#10004;</td>
+            <td style="width: 80%;"></td>
+            <td class="polarityCheck" style="color:#00ff00;">&#10004;</td>
             </tr>
           <tr>
             <td></td>
@@ -546,6 +557,7 @@
 			if (value == 100) {
 				finalMessage.innerHTML = "Done!";
 				document.getElementById("results").style = "opacity: 1;";
+				document.getElementById("results").disabled = false;
 			} else {
 				finalMessage.innerHTML = "...";
 				document.getElementById("results").style = "opacity: 0;";
@@ -559,6 +571,7 @@
 	function search() {
 		var search = document.getElementById("srchbox").value;
 		var searchtext = document.getElementById("searchtext");
+		document.getElementById("results").disabled = true;
 		if (search == "") {
 			document.getElementById("eswdiv").style.opacity="0.7";
 		} else {
@@ -664,7 +677,7 @@
 				break;
 		}
 		document.getElementById("descriptiontxt").style.opacity=1;
-		},300);
+		},150);
 	}
 
 	function descdft() {
@@ -672,7 +685,7 @@
 		setTimeout(function(){
 		document.getElementById("descriptiontxt").innerHTML="Description<br><h1>Hover on progress bars to see description of task being performed</h1>";
 			document.getElementById("descriptiontxt").style.opacity=1;
-		}, 300);
+		}, 150);
 	}
 
 	function loadingBar() {
