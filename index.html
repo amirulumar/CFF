@@ -346,33 +346,10 @@
 		  </tbody>
 		</table>
 	<div style="position: absolute; left: 0; right: 0; height: 25vh; width: 96.5%; margin: auto; margin-right: -1.5%; overflow:auto;">
-		  <table id="tweets" class="table-bordered">
-			  <tbody>
-          <tr>
-            <td style="width: 80%;"></td>
-            <td class="polarityCheck" style="color:#00ff00;">&#10004;</td>
-            </tr>
-          <tr>
-            <td></td>
-            <td class="polarityCheck" style="color:#ff0000">&#10006;</td>
-            </tr>
-          <tr>
-            <td></td>
-            <td class="polarityCheck" style="color:#00ff00">&#10004;</td>
-            </tr>
-          <tr>
-            <td></td>
-            <td class="polarityCheck" style="color:#ff0000">&#10006;</td>
-            </tr>
-			<tr>
-            <td></td>
-            <td class="polarityCheck" style="color:#00ff00">&#10004;</td>
-            </tr>
-          <tr>
-            <td></td>
-            <td class="polarityCheck" style="color:#ff0000">&#10006;</td>
-            </tr>
-          </tbody>
+		<table id="tweets" class="table-bordered">
+			 <tbody>
+          	
+			 </tbody>
         </table>
     </div>
 	
@@ -391,7 +368,7 @@
 	var avgStroke = 6;
 	var avgTrail = 4;
 	// Loading times may vary per progress bar, used for debugging purposes for now
-	var avgLoading = 1000;
+	var avgLoading = 100;
 	
 	var bar = new ProgressBar.Circle(container, {
   		color: '#aaa',
@@ -652,6 +629,7 @@
 			impression.innerHTML = "neutral";
 		}
 		document.getElementById("polarityValue").innerHTML = polarity + "%";
+		insertData();
 		
 	}
 	
@@ -678,6 +656,29 @@
 		}
 		document.getElementById("descriptiontxt").style.opacity=1;
 		},150);
+	}
+	
+	function insertData() {
+		var table = document.getElementById("tweets");
+		var total = 4;
+		var input = ' {"tweets": [{ "text": "qwertyasdf", "label": 1 }, { "text": "ytrewqfdsa", "label": 0 }, { "text": "qwertyuiop", "label": 1 }, { "text": "asdfghjklp", "label": 0 } ]}';
+		obj = JSON.parse(input);
+		for (var i = 0; i < total; i++) {
+			var row = table.insertRow(-1);
+			var text = row.insertCell(0);
+			var label = row.insertCell(1);
+			text.innerHTML = obj.tweets[i].text;
+			if (i == 0) {
+				text.style = "width: 80%";
+			}
+			if (obj.tweets[i].label == 1) {
+				label.style = "color: #00ff00";
+				label.innerHTML = "&#10004;";
+			} else if (obj.tweets[i].label == 0) {
+				label.style = "color: #ff0000";
+				label.innerHTML = "&#10006;";
+			} 
+		}
 	}
 
 	function descdft() {
