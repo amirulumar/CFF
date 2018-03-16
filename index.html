@@ -353,7 +353,7 @@
         </table>
     </div>
 	
-	<button id="backbtn" onClick="back()" type="button" class="btn btn-default"><span id="home" class="glyphicon glyphicon-home"></span></button>
+	<button id="backbtn" onClick="back()" type="button" class="btn btn-default"><span id="home" class="glyphicon">&#xe021;</span></button>
 </div>
 	
 	
@@ -564,13 +564,13 @@
 			if (search == "corn") {
 				//document.getElementById("resultimg").src="img/negative.png";
 				document.getElementById("resultimg").style="color: #ff0000;";
-				document.getElementById("resultimg").classList.remove('glyphicon-ok');
-				document.getElementById("resultimg").classList.add('glyphicon-remove');
+				document.getElementById("resultimg").innerHTML = "&#xe014;";
+				
 			} else {
 				//document.getElementById("resultimg").src="img/positive.png";
 				document.getElementById("resultimg").style="color: #009300;";
-				document.getElementById("resultimg").classList.add('glyphicon-ok');
-				document.getElementById("resultimg").classList.remove('glyphicon-remove');				
+				document.getElementById("resultimg").innerHTML = "&#xe013;";
+				
 			}
 		}
 	}
